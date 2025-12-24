@@ -71,9 +71,8 @@ export const FAQSection = () => {
                   {faq.question}
                 </span>
                 <ChevronDown
-                  className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
+                  className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${openIndex === index ? "rotate-180" : ""
+                    }`}
                 />
               </button>
               <AnimatePresence>

@@ -7,7 +7,7 @@ export const CTASection = () => {
   return (
     <section className="py-16 md:py-24 relative overflow-hidden">
       {/* Gradient Background */}
-      <div 
+      <div
         className="absolute inset-0"
         style={{
           background: "linear-gradient(90deg, hsl(210, 84%, 10%) 0%, hsl(197, 100%, 45%) 50%, hsl(210, 84%, 10%) 100%)",

@@ -64,18 +64,15 @@ export const ProcessSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className={`relative flex flex-col md:flex-row items-center gap-6 mb-12 ${
-                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-              }`}
+              className={`relative flex flex-col md:flex-row items-center gap-6 mb-12 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                }`}
             >
               {/* Content */}
               <div className={`flex-1 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
-                <div className={`bg-primary-foreground/5 rounded-xl p-6 border border-primary-foreground/10 ${
-                  index % 2 === 0 ? "md:ml-auto md:mr-8" : "md:mr-auto md:ml-8"
-                } max-w-md`}>
-                  <div className={`flex items-center gap-3 mb-3 ${
-                    index % 2 === 0 ? "md:justify-end" : "md:justify-start"
-                  }`}>
+                <div className={`bg-primary-foreground/5 rounded-xl p-6 border border-primary-foreground/10 ${index % 2 === 0 ? "md:ml-auto md:mr-8" : "md:mr-auto md:ml-8"
+                  } max-w-md`}>
+                  <div className={`flex items-center gap-3 mb-3 ${index % 2 === 0 ? "md:justify-end" : "md:justify-start"
+                    }`}>
                     <span className="text-xs font-medium text-secondary bg-secondary/20 px-2 py-1 rounded">
                       {step.duration}
                     </span>

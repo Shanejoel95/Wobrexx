@@ -78,11 +78,10 @@ export const ServicesSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -8 }}
-              className={`relative rounded-xl p-6 md:p-8 border transition-all duration-300 ${
-                service.highlighted
+              className={`relative rounded-xl p-6 md:p-8 border transition-all duration-300 ${service.highlighted
                   ? "bg-primary text-primary-foreground border-primary shadow-xl"
                   : "bg-card border-border hover:border-secondary/30 hover:shadow-xl"
-              }`}
+                }`}
             >
               {service.highlighted && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-xs font-medium">
@@ -90,33 +89,28 @@ export const ServicesSection = () => {
                 </div>
               )}
 
-              <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${
-                service.highlighted ? "bg-primary-foreground/10" : "bg-secondary/10"
-              }`}>
+              <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${service.highlighted ? "bg-primary-foreground/10" : "bg-secondary/10"
+                }`}>
                 <service.icon className={`w-7 h-7 ${service.highlighted ? "text-secondary" : "text-secondary"}`} />
               </div>
 
-              <h3 className={`text-xl font-semibold mb-3 ${
-                service.highlighted ? "text-primary-foreground" : "text-card-foreground"
-              }`}>
+              <h3 className={`text-xl font-semibold mb-3 ${service.highlighted ? "text-primary-foreground" : "text-card-foreground"
+                }`}>
                 {service.title}
               </h3>
 
-              <p className={`mb-6 ${
-                service.highlighted ? "text-primary-foreground/80" : "text-muted-foreground"
-              }`}>
+              <p className={`mb-6 ${service.highlighted ? "text-primary-foreground/80" : "text-muted-foreground"
+                }`}>
                 {service.description}
               </p>
 
               <ul className="space-y-3 mb-8">
                 {service.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-2">
-                    <Check className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
-                      service.highlighted ? "text-secondary" : "text-secondary"
-                    }`} />
-                    <span className={`text-sm ${
-                      service.highlighted ? "text-primary-foreground/80" : "text-muted-foreground"
-                    }`}>
+                    <Check className={`w-5 h-5 mt-0.5 flex-shrink-0 ${service.highlighted ? "text-secondary" : "text-secondary"
+                      }`} />
+                    <span className={`text-sm ${service.highlighted ? "text-primary-foreground/80" : "text-muted-foreground"
+                      }`}>
                       {feature}
                     </span>
                   </li>
