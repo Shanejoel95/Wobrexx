@@ -87,7 +87,7 @@ export const ProcessSection = () => {
 
               {/* Icon Circle */}
               <div className="relative z-10 flex-shrink-0">
-                <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center shadow-lg glow-cyan">
+                <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center shadow-lg glow-gold">
                   <step.icon className="w-8 h-8 text-secondary-foreground" />
                 </div>
                 <span className="absolute -top-2 -right-2 w-8 h-8 bg-primary-foreground rounded-full flex items-center justify-center text-sm font-bold text-primary">

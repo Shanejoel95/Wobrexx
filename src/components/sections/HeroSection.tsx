@@ -15,7 +15,7 @@ export const HeroSection = () => {
     <section 
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{
-        background: `linear-gradient(135deg, rgba(10, 24, 40, 0.95) 0%, rgba(26, 46, 66, 0.9) 100%)`,
+        background: `linear-gradient(135deg, hsl(220 70% 12%) 0%, hsl(220 55% 22%) 100%)`,
       }}
     >
       {/* Background Image */}
