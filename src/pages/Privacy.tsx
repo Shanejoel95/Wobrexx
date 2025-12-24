@@ -1,9 +1,9 @@
-import { Layout } from "@/components/layout/Layout";
+
 import { motion } from "framer-motion";
 
 const PrivacyPage = () => {
   return (
-    <Layout>
+    <div className="min-h-screen">
       <section className="py-16 md:py-24 bg-card">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -13,12 +13,12 @@ const PrivacyPage = () => {
             className="max-w-3xl mx-auto prose prose-lg"
           >
             <h1 className="text-4xl font-bold text-card-foreground mb-8">Privacy Policy</h1>
-            
+
             <p className="text-muted-foreground">Last updated: December 2024</p>
-            
+
             <h2 className="text-2xl font-semibold text-card-foreground mt-8 mb-4">1. Introduction</h2>
             <p className="text-muted-foreground">
-              At Wobrexx, we take your privacy seriously. This Privacy Policy explains how we collect, 
+              At Wobrexx, we take your privacy seriously. This Privacy Policy explains how we collect,
               use, and protect your personal data when you use our website and services.
             </p>
 
@@ -61,7 +61,7 @@ const PrivacyPage = () => {
           </motion.div>
         </div>
       </section>
-    </Layout>
+    </div>
   );
 };
 

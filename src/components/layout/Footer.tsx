@@ -28,12 +28,10 @@ export const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="inline-block mb-4">
-              <span className="text-2xl font-bold">
-                Wob<span className="text-secondary">rexx</span>
-              </span>
+              <img src="/logo.png" alt="Wobrexx Logo" className="h-12 w-auto" />
             </Link>
             <p className="text-primary-foreground/70 text-sm mb-6">
-              Bringing enterprise-grade automation to European SMEs. 
+              Bringing enterprise-grade automation to European SMEs.
               Transform your business with intelligent process automation.
             </p>
             <div className="flex space-x-4">
@@ -108,8 +106,8 @@ export const Footer = () => {
               <li className="flex items-start space-x-3">
                 <MapPin size={16} className="text-secondary mt-1 flex-shrink-0" />
                 <span className="text-sm text-primary-foreground/70">
-                  Germany • France • Netherlands<br />
-                  Belgium • Austria • Switzerland
+                  Remote-First Company<br />
+                  Serving Businesses Globally
                 </span>
               </li>
             </ul>

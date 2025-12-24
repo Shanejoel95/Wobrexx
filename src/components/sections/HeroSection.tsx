@@ -12,14 +12,14 @@ const trustItems = [
 
 export const HeroSection = () => {
   return (
-    <section 
+    <section
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{
         background: `linear-gradient(135deg, hsl(220 70% 12%) 0%, hsl(220 55% 22%) 100%)`,
       }}
     >
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 z-0"
         style={{
           backgroundImage: `url(${heroBg})`,
@@ -41,6 +41,20 @@ export const HeroSection = () => {
             transition={{ duration: 0.8 }}
             className="text-center lg:text-left"
           >
+            {/* Animated Logo */}
+            <motion.img
+              src="/logo.png"
+              alt="Wobrexx"
+              className="h-32 md:h-40 w-auto mb-8 mx-auto lg:mx-0"
+              initial={{ y: 0 }}
+              animate={{ y: [0, -15, 0] }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -57,14 +71,14 @@ export const HeroSection = () => {
 
             {/* Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6">
-              Transform Your Business with{" "}
-              <span className="text-gradient">Intelligent Automation</span>
+              Engineering the Future of <br className="hidden lg:block" />
+              <span className="text-gradient">Business efficiency</span>
             </h1>
 
             {/* Subheadline */}
             <p className="text-lg sm:text-xl text-primary-foreground/80 max-w-xl mx-auto lg:mx-0 mb-8">
-              Save 40% on operational costs and boost efficiency by 3x. 
-              Wobrexx brings enterprise-grade automation to European SMEs.
+              We bridge the gap between complex operational challenges and elegant, automated solutions.
+              World-class Sri Lankan engineering, tailored for the European market.
             </p>
 
             {/* CTAs */}

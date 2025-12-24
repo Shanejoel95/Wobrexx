@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Layout } from "@/components/layout/Layout";
+
 import { Button } from "@/components/ui/button";
 import { Heart, Shield, Users, Target, Award, Globe, ArrowRight } from "lucide-react";
 import { CTASection } from "@/components/sections/CTASection";
@@ -31,7 +31,7 @@ const certifications = [
 
 const AboutPage = () => {
   return (
-    <Layout>
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-16 md:py-24 gradient-navy">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,7 +45,7 @@ const AboutPage = () => {
               About Wobrexx
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/80">
-              Bringing enterprise automation to European SMEs. 
+              Bringing enterprise automation to European SMEs.
               We're on a mission to level the playing field.
             </p>
           </motion.div>
@@ -67,19 +67,17 @@ const AboutPage = () => {
                 <span className="text-sm font-medium">Our Mission</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-card-foreground mb-6">
-                Empowering European SMEs Through Intelligent Automation
+                Bridging Sri Lankan Talent with European Innovation
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                At Wobrexx, we believe every European business deserves access to 
-                world-class automation technology. We're on a mission to level the 
-                playing field, helping SMEs compete with enterprise giants through 
-                intelligent process automation.
+                Wobrexx was founded on a simple premise: European businesses demand precision, reliability,
+                and data security, while Sri Lanka produces some of the world's finest engineering talent.
+                We connect these two worlds.
               </p>
               <p className="text-muted-foreground">
-                Founded by automation specialists with 15+ years of combined experience 
-                helping European businesses transform their operations. We've worked with 
-                companies from Berlin to Barcelona, understanding the unique challenges 
-                of the European market.
+                We are a team of expert developers and automation architects based in Sri Lanka,
+                exclusively focused on the European market. We understand GDPR, we respect European
+                business hours, and we deliver enterprise-grade code that drives real growth.
               </p>
             </motion.div>
 
@@ -196,22 +194,21 @@ const AboutPage = () => {
               <Globe className="w-8 h-8 text-secondary" />
             </div>
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Proudly European
+              Remote-First, Quality-Obsessed
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              We understand the European business landscape. Our solutions are designed 
-              with GDPR compliance, multilingual support, and European time zones in mind. 
-              All data stays within EU borders, and our team speaks your language.
+              Distance is no barrier to excellence. Our remote-first culture allows us to recruit the top 1%
+              of engineering talent in Sri Lanka and deploy them to solve your most complex operational challenges.
+              You get world-class development at a competitive advantage.
             </p>
             <div className="flex flex-wrap justify-center gap-3 mb-8">
-              {["Germany", "France", "Netherlands", "Belgium", "Austria", "Switzerland"].map((country) => (
-                <span
-                  key={country}
-                  className="px-4 py-2 bg-card rounded-full text-sm font-medium text-muted-foreground border border-border"
-                >
-                  {country}
-                </span>
-              ))}
+              {/* Remote First */}
+              <span className="px-4 py-2 bg-card rounded-full text-sm font-medium text-muted-foreground border border-border">
+                Remote-First Company
+              </span>
+              <span className="px-4 py-2 bg-card rounded-full text-sm font-medium text-muted-foreground border border-border">
+                Sri Lanka Based
+              </span>
             </div>
             <Button variant="secondary" size="lg" asChild>
               <Link to="/contact" className="flex items-center gap-2">
@@ -224,7 +221,7 @@ const AboutPage = () => {
       </section>
 
       <CTASection />
-    </Layout>
+    </div>
   );
 };
 

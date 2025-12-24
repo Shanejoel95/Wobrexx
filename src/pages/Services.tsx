@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Layout } from "@/components/layout/Layout";
+
 import { Button } from "@/components/ui/button";
-import { 
-  Workflow, Database, Brain, Check, ArrowRight, 
-  FileText, Mail, Clock, Users, Link as LinkIcon, 
+import {
+  Workflow, Database, Brain, Check, ArrowRight,
+  FileText, Mail, Clock, Users, Link as LinkIcon,
   BarChart3, Lightbulb, Target
 } from "lucide-react";
 import { CTASection } from "@/components/sections/CTASection";
@@ -23,7 +23,7 @@ const services = [
       "Customer onboarding automation",
       "HR and employee workflows",
     ],
-    technologies: ["Zapier", "Make (Integromat)", "UiPath", "Power Automate"],
+    technologies: ["n8n", "Zapier", "Make", "Python Scripts", "Custom Webhooks"],
     color: "secondary",
   },
   {
@@ -62,7 +62,7 @@ const services = [
 
 const ServicesPage = () => {
   return (
-    <Layout>
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-16 md:py-24 gradient-navy">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -76,7 +76,7 @@ const ServicesPage = () => {
               Automation Services
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/80">
-              Comprehensive solutions tailored to your business needs. 
+              Comprehensive solutions tailored to your business needs.
               From strategy to execution, we handle everything.
             </p>
           </motion.div>
@@ -183,7 +183,7 @@ const ServicesPage = () => {
       ))}
 
       <CTASection />
-    </Layout>
+    </div>
   );
 };
 

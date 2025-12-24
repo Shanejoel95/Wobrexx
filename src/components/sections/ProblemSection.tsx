@@ -41,7 +41,6 @@ export const ProblemSection = () => {
   return (
     <section className="py-16 md:py-24 bg-card">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -50,10 +49,11 @@ export const ProblemSection = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-card-foreground mb-4">
-            Still Losing Time on Manual Tasks?
+            Inefficiency is Costing You Growth
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            European SMEs waste thousands of hours annually on repetitive tasks that should be automated.
+            Modern European enterprises don't fail from lack of ideas—they fail from operational drag.
+            Stop wasting hours on tasks machines can do better.
           </p>
         </motion.div>
 
@@ -66,10 +66,10 @@ export const ProblemSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-muted/50 rounded-xl p-6 border border-border hover:border-destructive/30 transition-all duration-300 group"
+              className="bg-muted/50 rounded-xl p-6 border border-border hover:border-secondary/30 transition-all duration-300 group"
             >
-              <div className="w-12 h-12 rounded-lg bg-destructive/10 flex items-center justify-center mb-4 group-hover:bg-destructive/20 transition-colors">
-                <problem.icon className="w-6 h-6 text-destructive" />
+              <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-4 group-hover:bg-secondary/20 transition-colors">
+                <problem.icon className="w-6 h-6 text-secondary" />
               </div>
               <h3 className="text-lg font-semibold text-card-foreground mb-2">{problem.title}</h3>
               <p className="text-muted-foreground text-sm">{problem.description}</p>
@@ -97,7 +97,7 @@ export const ProblemSection = () => {
           <h3 className="text-2xl md:text-3xl font-bold text-center text-primary-foreground mb-8">
             Wobrexx Automates It All
           </h3>
-          
+
           <div className="grid md:grid-cols-3 gap-6">
             {solutions.map((solution, index) => (
               <motion.div

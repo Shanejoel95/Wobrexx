@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Layout } from "@/components/layout/Layout";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { 
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -47,7 +47,7 @@ const ContactPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!formData.gdprConsent) {
       toast({
         title: "Consent Required",
@@ -82,7 +82,7 @@ const ContactPage = () => {
   };
 
   return (
-    <Layout>
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-16 md:py-24 gradient-navy">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -96,7 +96,7 @@ const ContactPage = () => {
               Let's Talk Automation
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/80">
-              Schedule your free consultation or get in touch. 
+              Schedule your free consultation or get in touch.
               We respond within 24 hours.
             </p>
           </motion.div>
@@ -229,16 +229,16 @@ const ContactPage = () => {
                       }
                     />
                     <Label htmlFor="marketingConsent" className="text-sm text-muted-foreground leading-relaxed">
-                      I'd like to receive updates about Wobrexx services and automation tips. 
+                      I'd like to receive updates about Wobrexx services and automation tips.
                       You can unsubscribe at any time.
                     </Label>
                   </div>
                 </div>
 
-                <Button 
-                  type="submit" 
-                  variant="secondary" 
-                  size="lg" 
+                <Button
+                  type="submit"
+                  variant="secondary"
+                  size="lg"
                   className="w-full"
                   disabled={isSubmitting}
                 >
@@ -301,20 +301,20 @@ const ContactPage = () => {
                 <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-4">
                   <MapPin className="w-6 h-6 text-secondary" />
                 </div>
-                <h3 className="text-lg font-semibold text-card-foreground mb-2">Serving</h3>
+                <h3 className="text-lg font-semibold text-card-foreground mb-2">Location</h3>
                 <p className="text-muted-foreground">
-                  Germany • France • Netherlands<br />
-                  Belgium • Austria • Switzerland
+                  Remote-First Company<br />
+                  Based in Sri Lanka
                 </p>
                 <p className="text-sm text-muted-foreground mt-2">
-                  Remote-first company
+                  Serving Global Clients
                 </p>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
-    </Layout>
+    </div>
   );
 };
 
