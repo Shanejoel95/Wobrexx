@@ -35,7 +35,7 @@ export const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
+          <a href="/" className="flex items-center space-x-2 group">
             <motion.img
               src="/logo.png"
               alt="Wobrexx Logo"
@@ -44,7 +44,7 @@ export const Header = () => {
             <span className="text-xl font-bold text-primary-foreground tracking-tight">
               Wob<span className="text-secondary">rexx</span>
             </span>
-          </Link>
+          </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
