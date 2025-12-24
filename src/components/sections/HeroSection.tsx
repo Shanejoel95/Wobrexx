@@ -71,14 +71,14 @@ export const HeroSection = () => {
 
             {/* Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6">
-              Engineering the Future of <br className="hidden lg:block" />
-              <span className="text-gradient">Business efficiency</span>
+              Transform Your Business with{" "}
+              <span className="text-gradient">Intelligent Automation</span>
             </h1>
 
             {/* Subheadline */}
             <p className="text-lg sm:text-xl text-primary-foreground/80 max-w-xl mx-auto lg:mx-0 mb-8">
-              We bridge the gap between complex operational challenges and elegant, automated solutions.
-              World-class Sri Lankan engineering, tailored for the European market.
+              Save 40% on operational costs and boost efficiency by 3x.
+              Wobrexx brings enterprise-grade automation to European SMEs.
             </p>
 
             {/* CTAs */}

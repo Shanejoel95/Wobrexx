@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-
+import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -82,7 +82,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <Layout>
       {/* Hero Section */}
       <section className="py-16 md:py-24 gradient-navy">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -314,7 +314,7 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
-    </div>
+    </Layout>
   );
 };
 

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-
+import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Heart, Shield, Users, Target, Award, Globe, ArrowRight } from "lucide-react";
 import { CTASection } from "@/components/sections/CTASection";
@@ -31,7 +31,7 @@ const certifications = [
 
 const AboutPage = () => {
   return (
-    <div className="min-h-screen">
+    <Layout>
       {/* Hero Section */}
       <section className="py-16 md:py-24 gradient-navy">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,17 +67,19 @@ const AboutPage = () => {
                 <span className="text-sm font-medium">Our Mission</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-card-foreground mb-6">
-                Bridging Sri Lankan Talent with European Innovation
+                Empowering European SMEs Through Intelligent Automation
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Wobrexx was founded on a simple premise: European businesses demand precision, reliability,
-                and data security, while Sri Lanka produces some of the world's finest engineering talent.
-                We connect these two worlds.
+                At Wobrexx, we believe every European business deserves access to
+                world-class automation technology. We're on a mission to level the
+                playing field, helping SMEs compete with enterprise giants through
+                intelligent process automation.
               </p>
               <p className="text-muted-foreground">
-                We are a team of expert developers and automation architects based in Sri Lanka,
-                exclusively focused on the European market. We understand GDPR, we respect European
-                business hours, and we deliver enterprise-grade code that drives real growth.
+                Founded by automation specialists with 15+ years of combined experience
+                helping European businesses transform their operations. We've worked with
+                companies from Berlin to Barcelona, understanding the unique challenges
+                of the European market.
               </p>
             </motion.div>
 
@@ -194,12 +196,11 @@ const AboutPage = () => {
               <Globe className="w-8 h-8 text-secondary" />
             </div>
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Remote-First, Quality-Obsessed
+              Connecting Sri Lanka & Europe
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Distance is no barrier to excellence. Our remote-first culture allows us to recruit the top 1%
-              of engineering talent in Sri Lanka and deploy them to solve your most complex operational challenges.
-              You get world-class development at a competitive advantage.
+              We are a remote-first company based in Sri Lanka, dedicated to serving the European market.
+              We bridge the gap with world-class engineering and a deep understanding of European business standards.
             </p>
             <div className="flex flex-wrap justify-center gap-3 mb-8">
               {/* Remote First */}
@@ -221,7 +222,7 @@ const AboutPage = () => {
       </section>
 
       <CTASection />
-    </div>
+    </Layout>
   );
 };
 

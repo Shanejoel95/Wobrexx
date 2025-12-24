@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-
+import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import {
   Workflow, Database, Brain, Check, ArrowRight,
@@ -23,7 +23,7 @@ const services = [
       "Customer onboarding automation",
       "HR and employee workflows",
     ],
-    technologies: ["n8n", "Zapier", "Make", "Python Scripts", "Custom Webhooks"],
+    technologies: ["Zapier", "Make (Integromat)", "UiPath", "Power Automate"],
     color: "secondary",
   },
   {
@@ -62,7 +62,7 @@ const services = [
 
 const ServicesPage = () => {
   return (
-    <div className="min-h-screen">
+    <Layout>
       {/* Hero Section */}
       <section className="py-16 md:py-24 gradient-navy">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -183,7 +183,7 @@ const ServicesPage = () => {
       ))}
 
       <CTASection />
-    </div>
+    </Layout>
   );
 };
 

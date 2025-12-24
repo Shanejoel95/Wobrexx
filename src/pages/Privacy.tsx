@@ -1,9 +1,9 @@
-
+import { Layout } from "@/components/layout/Layout";
 import { motion } from "framer-motion";
 
 const PrivacyPage = () => {
   return (
-    <div className="min-h-screen">
+    <Layout>
       <section className="py-16 md:py-24 bg-card">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -61,7 +61,7 @@ const PrivacyPage = () => {
           </motion.div>
         </div>
       </section>
-    </div>
+    </Layout>
   );
 };
 

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-
+import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import {
   Factory, Truck, HeartPulse, ShoppingCart, Building, Briefcase,
@@ -103,7 +103,7 @@ const industries = [
 
 const SolutionsPage = () => {
   return (
-    <div className="min-h-screen">
+    <Layout>
       {/* Hero Section */}
       <section className="py-16 md:py-24 gradient-navy">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -145,14 +145,14 @@ const SolutionsPage = () => {
 
                 {/* Challenges */}
                 <div className="mb-4">
-                  <h4 className="text-sm font-medium text-secondary mb-2 flex items-center gap-2">
+                  <h4 className="text-sm font-medium text-destructive mb-2 flex items-center gap-2">
                     <AlertTriangle size={14} />
                     Common Challenges
                   </h4>
                   <ul className="space-y-1">
                     {industry.challenges.map((challenge) => (
                       <li key={challenge} className="text-sm text-muted-foreground flex items-start gap-2">
-                        <span className="text-secondary">•</span>
+                        <span className="text-destructive">•</span>
                         {challenge}
                       </li>
                     ))}
@@ -181,7 +181,7 @@ const SolutionsPage = () => {
                     {industry.benefits.map((benefit) => (
                       <span
                         key={benefit}
-                        className="text-xs bg-secondary/10 text-secondary px-2 py-1 rounded-full"
+                        className="text-xs bg-success/10 text-success px-2 py-1 rounded-full"
                       >
                         {benefit}
                       </span>
@@ -221,7 +221,7 @@ const SolutionsPage = () => {
       </section>
 
       <CTASection />
-    </div>
+    </Layout>
   );
 };
 

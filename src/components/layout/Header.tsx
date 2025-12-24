@@ -27,7 +27,10 @@ export const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary py-2 ${isScrolled ? "shadow-lg" : ""}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? "bg-primary shadow-lg py-2"
+        : "bg-primary py-4 md:py-6"
+        }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
@@ -36,7 +39,7 @@ export const Header = () => {
             <motion.img
               src="/logo.png"
               alt="Wobrexx Logo"
-              className="h-12 w-auto transition-transform group-hover:scale-105"
+              className="h-14 w-auto transition-transform group-hover:scale-105"
             />
             <span className="text-xl font-bold text-primary-foreground tracking-tight">
               Wob<span className="text-secondary">rexx</span>

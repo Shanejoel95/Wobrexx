@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-
+import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Home } from "lucide-react";
 
 const NotFound = () => {
   return (
-    <div className="min-h-screen">
+    <Layout>
       <section className="min-h-[70vh] flex items-center justify-center bg-card">
         <div className="text-center px-4">
           <h1 className="text-8xl font-bold text-secondary mb-4">404</h1>
@@ -21,7 +21,7 @@ const NotFound = () => {
           </Button>
         </div>
       </section>
-    </div>
+    </Layout>
   );
 };
 

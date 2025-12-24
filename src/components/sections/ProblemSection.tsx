@@ -41,6 +41,7 @@ export const ProblemSection = () => {
   return (
     <section className="py-16 md:py-24 bg-card">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -49,11 +50,10 @@ export const ProblemSection = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-card-foreground mb-4">
-            Inefficiency is Costing You Growth
+            Still Losing Time on Manual Tasks?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Modern European enterprises don't fail from lack of ideas—they fail from operational drag.
-            Stop wasting hours on tasks machines can do better.
+            European SMEs waste thousands of hours annually on repetitive tasks that should be automated.
           </p>
         </motion.div>
 
