@@ -1,8 +1,16 @@
-# Welcome to your Lovable project
+# Wobrexx - Intelligent Automation Platform
+
+**Wobrexx** is a modern web application for a Sri Lankan-based intelligent automation company dedicated to serving European SMEs. 
+
+The site features a premium, dark-themed design (**Deep Navy #001b3d** background with **Vibrant Orange #ff6b3d** accents) utilizing modern web technologies and glassmorphism effects to establish trust and professional credibility.
+
+## Core Value Proposition
+- **Enterprise-Grade Automation:** Bringing high-end automation to small and medium enterprises.
+- **Cost & Efficiency:** Saving 40% on operational costs and boosting efficiency by 3x.
+- **Remote-First & Global:** A Sri Lankan team delivering world-class engineering to the European market.
+- **GDPR Compliant:** Secure, EU-standard data handling.
 
 ## Project info
-
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
 
 ## How can I edit this code?
 
