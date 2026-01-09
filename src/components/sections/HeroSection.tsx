@@ -71,14 +71,14 @@ export const HeroSection = () => {
 
             {/* Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6">
-              Transform Your Business with{" "}
-              <span className="text-gradient">Intelligent Automation</span>
+              We Design, Build &{" "}
+              <span className="text-gradient">Automate Your Systems</span>
             </h1>
 
             {/* Subheadline */}
             <p className="text-lg sm:text-xl text-primary-foreground/80 max-w-xl mx-auto lg:mx-0 mb-8">
-              Save 40% on operational costs and boost efficiency by 3x.
-              Wobrexx brings enterprise-grade automation to European SMEs.
+              Websites, custom SaaS, product development, and process automation for solo founders,
+              agencies, SMBs, and mid-market teams that need faster, smoother operations.
             </p>
 
             {/* CTAs */}

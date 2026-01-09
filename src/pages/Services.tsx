@@ -3,9 +3,19 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import {
-  Workflow, Database, Brain, Check, ArrowRight,
-  FileText, Mail, Clock, Users, Link as LinkIcon,
-  BarChart3, Lightbulb, Target
+  Workflow,
+  LayoutDashboard,
+  Code,
+  Globe,
+  Rocket,
+  Check,
+  ArrowRight,
+  FileText,
+  Mail,
+  Clock,
+  Users,
+  Link as LinkIcon,
+  BarChart3,
 } from "lucide-react";
 import { CTASection } from "@/components/sections/CTASection";
 
@@ -14,48 +24,68 @@ const services = [
     id: "process-automation",
     icon: Workflow,
     title: "Process Automation",
-    description: "Eliminate repetitive manual tasks and free your team to focus on high-value work.",
+    description:
+      "Automate repetitive work across teams so your people can focus on high‑value problems instead of admin.",
     benefits: [
-      "Invoice and expense processing",
-      "Document management and routing",
-      "Email and notification workflows",
-      "Data entry and migration",
-      "Customer onboarding automation",
-      "HR and employee workflows",
+      "Invoice and expense approvals on autopilot",
+      "Document and contract routing with full traceability",
+      "Email and notification workflows that never get missed",
+      "Data entry and synchronisation across tools",
+      "Customer onboarding and offboarding automation",
+      "HR, finance, and operations workflows streamlined",
     ],
-    technologies: ["Zapier", "Make (Integromat)", "UiPath", "Power Automate"],
+    technologies: ["Zapier", "Make", "n8n", "Power Automate"],
     color: "secondary",
   },
   {
-    id: "integration",
-    icon: Database,
-    title: "System Integration",
-    description: "Connect your business tools and create a seamless data flow across your organization.",
+    id: "custom-saas",
+    icon: LayoutDashboard,
+    title: "Custom SaaS Platforms",
+    description:
+      "Design and build the internal tools and client‑facing platforms that match how your business really works.",
     benefits: [
-      "CRM integration (Salesforce, HubSpot)",
-      "ERP connectivity (SAP, Odoo, Sage)",
-      "E-commerce platform integration",
-      "Accounting software sync (QuickBooks, Xero)",
-      "Custom API development",
-      "Real-time data synchronization",
+      "Customer and partner portals tailored to your processes",
+      "Internal tools that replace spreadsheets and email chains",
+      "Multi‑tenant SaaS products for recurring revenue",
+      "Role‑based access, audit trails, and compliance support",
+      "Embedded automation in every key workflow",
+      "Scalable architecture ready for future features",
     ],
-    technologies: ["REST APIs", "GraphQL", "Webhooks", "iPaaS platforms"],
+    technologies: ["React", "Node.js", "PostgreSQL", "AWS / Azure"],
     color: "secondary",
   },
   {
-    id: "ai-insights",
-    icon: Brain,
-    title: "AI-Powered Analytics",
-    description: "Transform your data into actionable insights with intelligent analytics and reporting.",
+    id: "websites",
+    icon: Globe,
+    title: "Websites & Web Experiences",
+    description:
+      "High‑performing marketing sites, landing pages, and product sites that plug directly into your systems.",
     benefits: [
-      "Custom business dashboards",
-      "Predictive analytics and forecasting",
-      "Automated report generation",
-      "KPI monitoring and alerts",
-      "Data visualization",
-      "Smart recommendations",
+      "Conversion‑focused marketing and product websites",
+      "Integrated forms, CRMs, and booking systems",
+      "Performance‑optimised and mobile‑first experiences",
+      "Analytics and event tracking wired from day one",
+      "SEO‑friendly foundations and clean information architecture",
+      "Content workflows connected to your internal tools",
     ],
-    technologies: ["Power BI", "Tableau", "Google Data Studio", "Python"],
+    technologies: ["Next.js", "Vite / React", "Headless CMS", "Analytics stack"],
+    color: "secondary",
+  },
+  {
+    id: "product-development",
+    icon: Rocket,
+    title: "Product Development",
+    description:
+      "From first idea to shipped product, we help you define, design, and deliver digital products that scale.",
+    benefits: [
+      "Product discovery and requirements definition",
+      "UX/UI design aligned with your brand and users",
+      "MVP builds to validate quickly with real customers",
+      "Roadmapping and iteration based on usage data",
+      "Integration and automation strategy baked in",
+      "Handover and training for your internal teams",
+    ],
+    technologies: ["Product strategy", "UX/UI design", "Agile delivery", "API‑first systems"],
     color: "secondary",
   },
 ];
@@ -73,11 +103,11 @@ const ServicesPage = () => {
             className="text-center max-w-3xl mx-auto"
           >
             <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
-              Automation Services
+              Services to Design, Build & Automate Your Systems
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/80">
-              Comprehensive solutions tailored to your business needs.
-              From strategy to execution, we handle everything.
+              Wobrexx partners with solo founders, agencies, SMBs, and mid‑market teams
+              to create the websites, products, and automations that keep operations moving fast.
             </p>
           </motion.div>
         </div>

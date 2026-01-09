@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Workflow, Database, Brain, ArrowRight, Check } from "lucide-react";
+import { Workflow, LayoutDashboard, Globe, Rocket, ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const services = [
   {
     icon: Workflow,
     title: "Process Automation",
-    description: "Automate repetitive tasks across departments",
+    description: "Automate repetitive work across teams and tools",
     features: [
       "Invoice & expense automation",
       "Document processing",
@@ -18,29 +18,42 @@ const services = [
     highlighted: false,
   },
   {
-    icon: Database,
-    title: "System Integration",
-    description: "Connect your tools and eliminate data silos",
+    icon: LayoutDashboard,
+    title: "Custom SaaS Platforms",
+    description: "Build internal tools and client portals that match your workflows",
     features: [
-      "CRM & ERP integration",
-      "API development",
-      "Real-time data synchronization",
-      "Custom middleware solutions",
+      "Internal tools to replace manual spreadsheets",
+      "Client and partner portals",
+      "Multi-tenant SaaS products",
+      "Embedded automation in key flows",
     ],
     link: "/services#integration",
     highlighted: true,
   },
   {
-    icon: Brain,
-    title: "AI-Powered Insights",
-    description: "Turn data into actionable intelligence",
+    icon: Globe,
+    title: "Websites & Web Experiences",
+    description: "High-performing websites connected to your systems",
     features: [
-      "Predictive analytics",
-      "Custom dashboards",
-      "Automated reporting",
-      "Smart recommendations",
+      "Marketing and product websites",
+      "Conversion-optimised landing pages",
+      "Integrated forms, CRM, and analytics",
+      "Performance and SEO best practices",
     ],
-    link: "/services#ai-insights",
+    link: "/services#websites",
+    highlighted: false,
+  },
+  {
+    icon: Rocket,
+    title: "Product Development",
+    description: "From first idea to launched digital product",
+    features: [
+      "Product discovery and scoping",
+      "UX/UI design and prototyping",
+      "MVP builds and iteration",
+      "Automation and integration strategy",
+    ],
+    link: "/services#product-development",
     highlighted: false,
   },
 ];
@@ -61,15 +74,15 @@ export const ServicesSection = () => {
             <span className="text-sm font-medium">Our Services</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-card-foreground mb-4">
-            End-to-End Automation Solutions
+            Design, Build & Automate Your Digital Systems
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            From strategy to execution, we handle everything
+            From automation and custom SaaS to websites and product development, we help your team move faster with less manual work.
           </p>
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid lg:grid-cols-4 gap-6 md:gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
