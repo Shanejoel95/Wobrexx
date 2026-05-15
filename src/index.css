@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
@@ -13,34 +13,33 @@
 
     /* Secondary Colors - Vibrant Orange */
     --secondary: 28 100% 50%;
-    /* Vibrant Orange from Logo */
     --secondary-light: 28 100% 60%;
     --secondary-foreground: 213 100% 12%;
 
     /* Background */
-    --background: 213 30% 98%;
+    --background: 0 0% 99%;
     --background-white: 0 0% 100%;
-    --foreground: 213 100% 12%;
+    --foreground: 213 100% 10%;
 
     /* Card */
     --card: 0 0% 100%;
-    --card-foreground: 213 100% 12%;
+    --card-foreground: 213 100% 10%;
 
     /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 213 100% 12%;
+    --popover-foreground: 213 100% 10%;
 
     /* Muted */
-    --muted: 213 20% 96%;
-    --muted-foreground: 213 40% 45%;
+    --muted: 213 15% 95%;
+    --muted-foreground: 213 25% 42%;
 
     /* Accent */
     --accent: 28 100% 50%;
     --accent-foreground: 213 100% 12%;
 
     /* Destructive */
-    --destructive: 28 100% 50%;
-    --destructive-foreground: 213 100% 12%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
     /* Success */
     --success: 142 72% 35%;
@@ -51,13 +50,13 @@
     --warning-foreground: 213 100% 12%;
 
     /* Border */
-    --border: 213 20% 90%;
-    --input: 213 20% 90%;
+    --border: 213 12% 90%;
+    --input: 213 12% 90%;
     --ring: 28 100% 50%;
 
     /* Radius */
     --radius: 0.5rem;
-    --radius-sm: 0.375rem;
+    --radius-sm: 0.25rem;
     --radius-md: 0.5rem;
     --radius-lg: 0.75rem;
     --radius-xl: 1rem;
@@ -72,39 +71,28 @@
     --sidebar-border: 213 20% 90%;
     --sidebar-ring: 28 100% 50%;
 
-    /* Animation helper var */
     --radix-accordion-content-height: 0px;
   }
 
   .dark {
-    /* Deep Navy Dark Mode */
     --primary: 28 100% 50%;
     --primary-foreground: 213 100% 12%;
-
     --secondary: 213 60% 20%;
     --secondary-foreground: 0 0% 100%;
-
     --background: 213 100% 8%;
     --background-white: 213 100% 12%;
     --foreground: 0 0% 100%;
-
     --card: 213 100% 12%;
     --card-foreground: 0 0% 100%;
-
     --popover: 213 100% 12%;
     --popover-foreground: 0 0% 100%;
-
     --muted: 213 60% 20%;
     --muted-foreground: 213 30% 70%;
-
-    /* Accent */
     --accent: 28 100% 50%;
     --accent-foreground: 213 100% 12%;
-
     --border: 213 60% 20%;
     --input: 213 60% 20%;
     --ring: 28 100% 50%;
-
     --sidebar-background: 213 100% 6%;
     --sidebar-foreground: 0 0% 100%;
     --sidebar-primary: 28 100% 50%;
@@ -126,14 +114,14 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', sans-serif;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 }
 
 @layer utilities {
   .gradient-navy {
-    background: linear-gradient(135deg, hsl(213 100% 12%) 0%, hsl(213 100% 25%) 100%);
+    background: linear-gradient(135deg, hsl(213 100% 8%) 0%, hsl(213 100% 18%) 100%);
   }
 
   .gradient-cta {
@@ -141,19 +129,57 @@
   }
 
   .text-gradient {
-    /* Orange Gradient */
-    background: linear-gradient(135deg, hsl(28 100% 50%) 0%, hsl(28 100% 60%) 100%);
+    background: linear-gradient(135deg, hsl(28 100% 55%) 0%, hsl(28 100% 45%) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .glow-gold {
-    /* Renaming logic: glow-orange */
     box-shadow: 0 0 30px hsl(28 100% 50% / 0.4);
   }
 
   .shadow-elegant {
-    box-shadow: 0 10px 40px -10px hsl(213 100% 12% / 0.3);
+    box-shadow: 0 10px 40px -10px hsl(213 100% 12% / 0.15);
+  }
+
+  .dot-grid {
+    background-image: radial-gradient(circle, hsl(213 60% 70% / 0.18) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .line-grid {
+    background-image:
+      linear-gradient(hsl(213 60% 70% / 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(213 60% 70% / 0.07) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+    will-change: transform;
+  }
+
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  }
+
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+
+  .animate-accordion-down {
+    animation: accordion-down 0.2s ease-out;
+  }
+
+  .animate-accordion-up {
+    animation: accordion-up 0.2s ease-out;
   }
 }

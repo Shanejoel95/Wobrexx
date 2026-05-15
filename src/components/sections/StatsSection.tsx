@@ -1,32 +1,11 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { TrendingDown, Zap, Clock, Heart } from "lucide-react";
 
 const stats = [
-  {
-    number: 40,
-    suffix: "%",
-    label: "Average Cost Reduction",
-    icon: TrendingDown,
-  },
-  {
-    number: 3,
-    suffix: "x",
-    label: "Efficiency Improvement",
-    icon: Zap,
-  },
-  {
-    number: 15,
-    suffix: "hrs",
-    label: "Weekly Time Saved",
-    icon: Clock,
-  },
-  {
-    number: 98,
-    suffix: "%",
-    label: "Client Satisfaction",
-    icon: Heart,
-  },
+  { number: 40, suffix: "%", label: "Average cost reduction" },
+  { number: 3, suffix: "×", label: "Efficiency improvement" },
+  { number: 15, suffix: " hrs", label: "Weekly time saved" },
+  { number: 98, suffix: "%", label: "Client satisfaction" },
 ];
 
 const CountUp = ({ target, suffix }: { target: number; suffix: string }) => {
@@ -57,48 +36,57 @@ const CountUp = ({ target, suffix }: { target: number; suffix: string }) => {
 
   return (
     <span ref={ref}>
-      {count}{suffix}
+      {count}
+      {suffix}
     </span>
   );
 };
 
+const borderClass = (index: number) => {
+  const classes: string[] = [];
+  // Mobile (2-col): right border for left column
+  if (index % 2 === 0) classes.push("border-r border-border");
+  // Mobile: top border for second row
+  if (index >= 2) classes.push("border-t border-border");
+  // Desktop (4-col): add right border for index 1 (not in left column on mobile)
+  if (index === 1) classes.push("md:border-r md:border-border");
+  // Desktop: remove top border added for mobile second row
+  if (index >= 2) classes.push("md:border-t-0");
+  return classes.join(" ");
+};
+
 export const StatsSection = () => {
   return (
-    <section className="py-16 md:py-24 bg-card">
+    <section className="py-20 md:py-28 bg-white border-y border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          transition={{ duration: 0.5 }}
+          className="mb-12 md:mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-card-foreground mb-4">
-            The Wobrexx Impact
+          <span className="text-[11px] font-semibold text-secondary tracking-[0.18em] uppercase block mb-4">
+            Impact
+          </span>
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
+            The Wobrexx difference
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Real results our clients experience
-          </p>
         </motion.div>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 border border-border rounded-2xl overflow-hidden">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="text-center p-6 rounded-xl bg-muted/50 border border-border hover:border-secondary/30 transition-all duration-300"
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              className={`p-8 md:p-10 lg:p-12 ${borderClass(index)}`}
             >
-              <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center mx-auto mb-4">
-                <stat.icon className="w-6 h-6 text-secondary" />
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-secondary mb-2">
+              <p className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-secondary mb-3">
                 <CountUp target={stat.number} suffix={stat.suffix} />
-              </div>
+              </p>
               <p className="text-sm text-muted-foreground">{stat.label}</p>
             </motion.div>
           ))}

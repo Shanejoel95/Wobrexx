@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -19,123 +19,140 @@ export const Header = () => {
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    setIsScrolled(latest > 20);
+    setIsScrolled(latest > 40);
   });
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? "bg-primary shadow-lg py-2"
-        : "bg-primary py-4 md:py-6"
+    <>
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className={`fixed z-50 transition-all duration-500 ${
+          isScrolled
+            ? "top-3 left-3 right-3"
+            : "top-0 left-0 right-0"
         }`}
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <a href="/" className="flex items-center space-x-2 group">
-            <motion.img
-              src="/logo.png"
-              alt="Wobrexx Logo"
-              className="h-14 w-auto transition-transform group-hover:scale-105"
-            />
-            <span className="text-xl font-bold text-primary-foreground tracking-tight">
-              Wob<span className="text-secondary">rexx</span>
-            </span>
-          </a>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                className="relative px-4 py-2 group"
+        style={{
+          transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+        }}
+      >
+        {/* Pill wrapper */}
+        <div
+          className={`transition-all duration-500 ${
+            isScrolled
+              ? "bg-primary/90 backdrop-blur-2xl rounded-2xl border border-white/[0.08] shadow-2xl shadow-black/25"
+              : ""
+          }`}
+          style={{ transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}
+        >
+          <div
+            className={`flex items-center justify-between transition-all duration-300 ${
+              isScrolled
+                ? "px-5 py-3"
+                : "container mx-auto px-4 sm:px-6 lg:px-8 py-5"
+            }`}
+          >
+            {/* Logo */}
+            <a href="/" className="flex items-center gap-3 group flex-shrink-0">
+              <img
+                src="/logo.png"
+                alt="Wobrexx"
+                className={`w-auto transition-all duration-300 ${
+                  isScrolled ? "h-8" : "h-10"
+                }`}
+              />
+              <span
+                className={`font-semibold text-white tracking-tight font-display transition-all duration-300 ${
+                  isScrolled ? "text-sm" : "text-base"
+                }`}
               >
-                <span className={`relative z-10 text-sm font-medium transition-colors ${location.pathname === link.href ? "text-secondary" : "text-primary-foreground/90 group-hover:text-secondary"
-                  }`}>
-                  {link.label}
-                </span>
-                {location.pathname === link.href && (
-                  <motion.div
-                    layoutId="navbar-indicator"
-                    className="absolute inset-0 bg-secondary/10 rounded-full"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-              </Link>
-            ))}
-          </nav>
+                Wob<span className="text-secondary">rexx</span>
+              </span>
+            </a>
 
-          {/* CTA Button */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Button
-              variant="secondary"
-              size="sm"
-              className="shadow-lg hover:shadow-secondary/20 transition-all duration-300 hover:scale-105"
-              asChild
-            >
-              <Link to="/contact">Get Free Consultation</Link>
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-primary-foreground p-2 hover:bg-white/10 rounded-lg transition-colors"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Navigation */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-primary/95 backdrop-blur-xl border-t border-primary-light/20 overflow-hidden"
-          >
-            <div className="container mx-auto px-4 py-6 space-y-4">
-              {navLinks.map((link, i) => (
-                <motion.div
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center gap-0.5">
+              {navLinks.map((link) => (
+                <Link
                   key={link.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
+                  to={link.href}
+                  className={`px-3.5 py-2 text-sm transition-colors rounded-lg ${
+                    location.pathname === link.href
+                      ? "text-secondary"
+                      : "text-white/55 hover:text-white"
+                  }`}
                 >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+
+            {/* CTA + Mobile toggle */}
+            <div className="flex items-center gap-2">
+              <Button
+                size="sm"
+                className={`hidden md:flex bg-secondary text-secondary-foreground hover:bg-secondary-light font-medium rounded-lg transition-all duration-300 ${
+                  isScrolled ? "h-8 px-4 text-xs" : "h-9 px-5 text-sm"
+                }`}
+                asChild
+              >
+                <Link to="/contact">Get Started</Link>
+              </Button>
+
+              <button
+                className="md:hidden text-white p-2 rounded-lg hover:bg-white/[0.05] transition-colors"
+                onClick={() => setIsOpen(!isOpen)}
+                aria-label="Toggle menu"
+              >
+                {isOpen ? <X size={18} /> : <Menu size={18} />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile menu — only shown when isOpen */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              className={`md:hidden mt-2 bg-primary/95 backdrop-blur-2xl border border-white/[0.08] shadow-2xl shadow-black/25 overflow-hidden ${
+                isScrolled ? "rounded-2xl" : "rounded-2xl"
+              }`}
+            >
+              <div className="px-4 py-4 space-y-1">
+                {navLinks.map((link) => (
                   <Link
+                    key={link.href}
                     to={link.href}
-                    className={`block py-3 px-4 rounded-lg text-base font-medium transition-colors ${location.pathname === link.href
-                      ? "bg-secondary/10 text-secondary"
-                      : "text-primary-foreground/90 hover:bg-white/5 active:bg-white/10"
-                      }`}
+                    className={`block py-3 px-4 rounded-xl text-sm transition-colors ${
+                      location.pathname === link.href
+                        ? "bg-secondary/10 text-secondary"
+                        : "text-white/65 hover:text-white hover:bg-white/[0.04]"
+                    }`}
                     onClick={() => setIsOpen(false)}
                   >
                     {link.label}
                   </Link>
-                </motion.div>
-              ))}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-              >
-                <Button variant="secondary" className="w-full mt-4 h-12 text-lg shadow-xl" asChild>
-                  <Link to="/contact" onClick={() => setIsOpen(false)}>
-                    Get Free Consultation
-                  </Link>
-                </Button>
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.header>
+                ))}
+                <div className="pt-2 pb-1">
+                  <Button
+                    className="w-full bg-secondary text-secondary-foreground hover:bg-secondary-light font-medium rounded-xl h-11 text-sm"
+                    asChild
+                  >
+                    <Link to="/contact" onClick={() => setIsOpen(false)}>
+                      Get Started
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.header>
+    </>
   );
 };

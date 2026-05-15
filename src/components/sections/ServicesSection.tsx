@@ -1,145 +1,144 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Workflow, LayoutDashboard, Globe, Rocket, ArrowRight, Check } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Workflow, LayoutDashboard, Globe, Wrench, ArrowUpRight } from "lucide-react";
 
 const services = [
   {
+    number: "01",
     icon: Workflow,
     title: "Process Automation",
-    description: "Automate repetitive work across teams and tools",
-    features: [
-      "Invoice & expense automation",
-      "Document processing",
-      "Email & notification workflows",
-      "Data entry elimination",
-    ],
+    description:
+      "Automate repetitive work across teams and tools — invoices, emails, data entry, and more.",
     link: "/services#process-automation",
-    highlighted: false,
+    featured: false,
   },
   {
+    number: "02",
     icon: LayoutDashboard,
     title: "Custom SaaS Platforms",
-    description: "Build internal tools and client portals that match your workflows",
-    features: [
-      "Internal tools to replace manual spreadsheets",
-      "Client and partner portals",
-      "Multi-tenant SaaS products",
-      "Embedded automation in key flows",
-    ],
+    description:
+      "Build internal tools and client portals that replace manual spreadsheets and match your exact workflows.",
     link: "/services#integration",
-    highlighted: true,
+    featured: true,
   },
   {
+    number: "03",
     icon: Globe,
     title: "Websites & Web Experiences",
-    description: "High-performing websites connected to your systems",
-    features: [
-      "Marketing and product websites",
-      "Conversion-optimised landing pages",
-      "Integrated forms, CRM, and analytics",
-      "Performance and SEO best practices",
-    ],
+    description:
+      "High-performing websites and landing pages integrated with your CRM, analytics, and systems.",
     link: "/services#websites",
-    highlighted: false,
+    featured: false,
   },
   {
-    icon: Rocket,
-    title: "Product Development",
-    description: "From first idea to launched digital product",
-    features: [
-      "Product discovery and scoping",
-      "UX/UI design and prototyping",
-      "MVP builds and iteration",
-      "Automation and integration strategy",
-    ],
-    link: "/services#product-development",
-    highlighted: false,
+    number: "04",
+    icon: Wrench,
+    title: "Software Maintenance",
+    description:
+      "Keep your systems fast, secure, and evolving. Ongoing support, updates, monitoring, and feature iteration.",
+    link: "/services#software-maintenance",
+    featured: false,
   },
 ];
 
 export const ServicesSection = () => {
   return (
-    <section className="py-16 md:py-24 bg-card">
+    <section className="py-20 md:py-28 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/30 text-secondary mb-4">
-            <span className="text-sm font-medium">Our Services</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-card-foreground mb-4">
-            Design, Build & Automate Your Digital Systems
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            From automation and custom SaaS to websites and product development, we help your team move faster with less manual work.
-          </p>
-        </motion.div>
+        {/* Header row */}
+        <div className="flex items-end justify-between mb-10 md:mb-14">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="text-[11px] font-semibold text-secondary tracking-[0.18em] uppercase block mb-4">
+              What We Do
+            </span>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+              Our Services
+            </h2>
+          </motion.div>
 
-        {/* Services Grid */}
-        <div className="grid lg:grid-cols-4 gap-6 md:gap-8">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Link
+              to="/services"
+              className="hidden md:flex items-center gap-1.5 text-sm text-muted-foreground hover:text-secondary transition-colors"
+            >
+              View all services
+              <ArrowUpRight size={15} />
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* Service list */}
+        <div className="border-t border-border">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -8 }}
-              className={`relative rounded-xl p-6 md:p-8 border transition-all duration-300 ${service.highlighted
-                  ? "bg-primary text-primary-foreground border-primary shadow-xl"
-                  : "bg-card border-border hover:border-secondary/30 hover:shadow-xl"
-                }`}
+              transition={{ duration: 0.45, delay: index * 0.07 }}
             >
-              {service.highlighted && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-xs font-medium">
-                  Most Popular
-                </div>
-              )}
-
-              <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${service.highlighted ? "bg-primary-foreground/10" : "bg-secondary/10"
-                }`}>
-                <service.icon className={`w-7 h-7 ${service.highlighted ? "text-secondary" : "text-secondary"}`} />
-              </div>
-
-              <h3 className={`text-xl font-semibold mb-3 ${service.highlighted ? "text-primary-foreground" : "text-card-foreground"
-                }`}>
-                {service.title}
-              </h3>
-
-              <p className={`mb-6 ${service.highlighted ? "text-primary-foreground/80" : "text-muted-foreground"
-                }`}>
-                {service.description}
-              </p>
-
-              <ul className="space-y-3 mb-8">
-                {service.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2">
-                    <Check className={`w-5 h-5 mt-0.5 flex-shrink-0 ${service.highlighted ? "text-secondary" : "text-secondary"
-                      }`} />
-                    <span className={`text-sm ${service.highlighted ? "text-primary-foreground/80" : "text-muted-foreground"
-                      }`}>
-                      {feature}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              <Button
-                variant={service.highlighted ? "white" : "outline"}
-                className="w-full group"
-                asChild
+              <Link
+                to={service.link}
+                className={`group relative flex items-start md:items-center gap-5 md:gap-7 py-7 md:py-8 border-b border-border transition-colors hover:bg-muted/20 -mx-4 px-4 rounded-none md:rounded-xl md:-mx-5 md:px-5`}
               >
-                <Link to={service.link} className="flex items-center justify-center gap-2">
-                  Learn More
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
+                {/* Featured left accent */}
+                {service.featured && (
+                  <div className="absolute left-0 top-4 bottom-4 w-[3px] bg-secondary rounded-r-full md:left-0" />
+                )}
+
+                {/* Step number */}
+                <span className="text-xs font-mono text-muted-foreground/40 w-7 flex-shrink-0 mt-0.5 md:mt-0">
+                  {service.number}
+                </span>
+
+                {/* Icon */}
+                <div
+                  className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                    service.featured ? "bg-secondary/12" : "bg-muted"
+                  }`}
+                >
+                  <service.icon
+                    className={`w-5 h-5 ${
+                      service.featured
+                        ? "text-secondary"
+                        : "text-muted-foreground"
+                    }`}
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-3 mb-1.5">
+                    <h3 className="text-base md:text-lg font-semibold font-display text-foreground">
+                      {service.title}
+                    </h3>
+                    {service.featured && (
+                      <span className="text-[10px] font-semibold bg-secondary/10 text-secondary px-2 py-0.5 rounded-full tracking-wide">
+                        Popular
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {service.description}
+                  </p>
+                </div>
+
+                {/* Arrow */}
+                <ArrowUpRight
+                  size={17}
+                  className="text-muted-foreground/30 group-hover:text-secondary transition-all flex-shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 mt-0.5 md:mt-0"
+                />
+              </Link>
             </motion.div>
           ))}
         </div>

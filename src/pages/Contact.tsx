@@ -14,21 +14,21 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Mail, Calendar, MapPin, Send, Loader2 } from "lucide-react";
+import { Mail, Calendar, MapPin, ArrowRight, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const roleOptions = [
-  "CEO/Founder",
-  "Operations Manager",
-  "IT Manager",
-  "Other",
+const roleOptions = ["CEO/Founder", "Operations Manager", "IT Manager", "Other"];
+const employeeOptions = [
+  "1–10 employees",
+  "11–50 employees",
+  "51–200 employees",
+  "200+ employees",
 ];
 
-const employeeOptions = [
-  "1-10 employees",
-  "11-50 employees",
-  "51-200 employees",
-  "200+ employees",
+const trustPoints = [
+  "We respond within 24 hours",
+  "No sales pressure — just honest advice",
+  "30-minute call, no commitment required",
 ];
 
 const ContactPage = () => {
@@ -58,13 +58,12 @@ const ContactPage = () => {
     }
 
     setIsSubmitting(true);
-
-    // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     toast({
       title: "Message Sent!",
-      description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
+      description:
+        "Thank you for your inquiry. We'll get back to you within 24 hours.",
     });
 
     setFormData({
@@ -83,81 +82,115 @@ const ContactPage = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="py-16 md:py-24 gradient-navy">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Page Header */}
+      <section className="bg-primary pt-32 pb-20 md:pt-40 md:pb-24 relative overflow-hidden">
+        <div className="absolute inset-0 line-grid opacity-25 pointer-events-none z-0" />
+        <div
+          className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none z-0"
+          style={{
+            background:
+              "radial-gradient(circle, hsl(28 100% 50% / 0.07) 0%, transparent 65%)",
+          }}
+        />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
-              Let's Talk Automation
+            <span className="text-[11px] font-semibold text-secondary tracking-[0.18em] uppercase block mb-5">
+              Get In Touch
+            </span>
+            <h1
+              className="font-display font-bold text-white leading-[0.93] tracking-tight mb-6 max-w-2xl"
+              style={{ fontSize: "clamp(2.8rem, 7vw, 6rem)" }}
+            >
+              Let's talk<br />automation.
             </h1>
-            <p className="text-lg md:text-xl text-primary-foreground/80">
-              Schedule your free consultation or get in touch.
-              We respond within 24 hours.
+            <p className="text-white/45 text-base md:text-lg max-w-md leading-relaxed">
+              Tell us what you're working on. We'll respond within 24 hours
+              with honest, practical advice.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-16 md:py-24 bg-card">
+      {/* Contact section */}
+      <section className="py-20 md:py-28 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-3 gap-12">
-            {/* Contact Form */}
+          <div className="grid lg:grid-cols-3 gap-14 lg:gap-20">
+            {/* Form — takes 2/3 */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               className="lg:col-span-2"
             >
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-7">
+                {/* Name + Email */}
+                <div className="grid md:grid-cols-2 gap-5">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Full Name *</Label>
+                    <Label htmlFor="name" className="text-sm font-medium text-foreground">
+                      Full Name <span className="text-secondary">*</span>
+                    </Label>
                     <Input
                       id="name"
                       required
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="John Doe"
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
+                      placeholder="Jane Smith"
+                      className="h-11 rounded-lg border-border focus:border-secondary focus:ring-secondary"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">Work Email *</Label>
+                    <Label htmlFor="email" className="text-sm font-medium text-foreground">
+                      Work Email <span className="text-secondary">*</span>
+                    </Label>
                     <Input
                       id="email"
                       type="email"
                       required
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="john@company.com"
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
+                      placeholder="jane@company.com"
+                      className="h-11 rounded-lg border-border focus:border-secondary focus:ring-secondary"
                     />
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                {/* Company + Role */}
+                <div className="grid md:grid-cols-2 gap-5">
                   <div className="space-y-2">
-                    <Label htmlFor="company">Company Name *</Label>
+                    <Label htmlFor="company" className="text-sm font-medium text-foreground">
+                      Company Name <span className="text-secondary">*</span>
+                    </Label>
                     <Input
                       id="company"
                       required
                       value={formData.company}
-                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      placeholder="Your Company"
+                      onChange={(e) =>
+                        setFormData({ ...formData, company: e.target.value })
+                      }
+                      placeholder="Acme GmbH"
+                      className="h-11 rounded-lg border-border focus:border-secondary focus:ring-secondary"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="role">Your Role</Label>
+                    <Label htmlFor="role" className="text-sm font-medium text-foreground">
+                      Your Role
+                    </Label>
                     <Select
                       value={formData.role}
-                      onValueChange={(value) => setFormData({ ...formData, role: value })}
+                      onValueChange={(value) =>
+                        setFormData({ ...formData, role: value })
+                      }
                     >
-                      <SelectTrigger>
+                      <SelectTrigger className="h-11 rounded-lg border-border">
                         <SelectValue placeholder="Select your role" />
                       </SelectTrigger>
                       <SelectContent>
@@ -171,13 +204,18 @@ const ContactPage = () => {
                   </div>
                 </div>
 
+                {/* Company size */}
                 <div className="space-y-2">
-                  <Label htmlFor="employees">Company Size</Label>
+                  <Label htmlFor="employees" className="text-sm font-medium text-foreground">
+                    Company Size
+                  </Label>
                   <Select
                     value={formData.employees}
-                    onValueChange={(value) => setFormData({ ...formData, employees: value })}
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, employees: value })
+                    }
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="h-11 rounded-lg border-border">
                       <SelectValue placeholder="Select company size" />
                     </SelectTrigger>
                     <SelectContent>
@@ -190,125 +228,159 @@ const ContactPage = () => {
                   </Select>
                 </div>
 
+                {/* Goals */}
                 <div className="space-y-2">
-                  <Label htmlFor="automationGoal">What would you like to automate?</Label>
+                  <Label htmlFor="automationGoal" className="text-sm font-medium text-foreground">
+                    What would you like to automate?
+                  </Label>
                   <Textarea
                     id="automationGoal"
                     value={formData.automationGoal}
-                    onChange={(e) => setFormData({ ...formData, automationGoal: e.target.value })}
-                    placeholder="Tell us about your current challenges and automation goals..."
+                    onChange={(e) =>
+                      setFormData({ ...formData, automationGoal: e.target.value })
+                    }
+                    placeholder="Tell us about your current challenges and automation goals — the more detail, the better advice we can give."
                     rows={4}
+                    className="rounded-lg border-border resize-none focus:border-secondary focus:ring-secondary"
                   />
                 </div>
 
-                {/* Consent Checkboxes */}
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
+                {/* Consent */}
+                <div className="space-y-4 pt-1">
+                  <div className="flex items-start gap-3">
                     <Checkbox
                       id="gdprConsent"
                       checked={formData.gdprConsent}
                       onCheckedChange={(checked) =>
                         setFormData({ ...formData, gdprConsent: checked as boolean })
                       }
+                      className="mt-0.5"
                     />
-                    <Label htmlFor="gdprConsent" className="text-sm text-muted-foreground leading-relaxed">
+                    <Label
+                      htmlFor="gdprConsent"
+                      className="text-sm text-muted-foreground leading-relaxed cursor-pointer"
+                    >
                       I agree to the processing of my personal data according to the{" "}
-                      <Link to="/privacy" className="text-secondary hover:underline">
+                      <Link to="/privacy" className="text-secondary hover:underline underline-offset-2">
                         Privacy Policy
                       </Link>
-                      . You can withdraw your consent at any time. *
+                      . You can withdraw consent at any time.{" "}
+                      <span className="text-secondary">*</span>
                     </Label>
                   </div>
 
-                  <div className="flex items-start space-x-3">
+                  <div className="flex items-start gap-3">
                     <Checkbox
                       id="marketingConsent"
                       checked={formData.marketingConsent}
                       onCheckedChange={(checked) =>
-                        setFormData({ ...formData, marketingConsent: checked as boolean })
+                        setFormData({
+                          ...formData,
+                          marketingConsent: checked as boolean,
+                        })
                       }
+                      className="mt-0.5"
                     />
-                    <Label htmlFor="marketingConsent" className="text-sm text-muted-foreground leading-relaxed">
-                      I'd like to receive updates about Wobrexx services and automation tips.
-                      You can unsubscribe at any time.
+                    <Label
+                      htmlFor="marketingConsent"
+                      className="text-sm text-muted-foreground leading-relaxed cursor-pointer"
+                    >
+                      I'd like to receive occasional updates about Wobrexx
+                      services and automation tips. Unsubscribe anytime.
                     </Label>
                   </div>
                 </div>
 
                 <Button
                   type="submit"
-                  variant="secondary"
-                  size="lg"
-                  className="w-full"
+                  className="w-full bg-secondary text-secondary-foreground hover:bg-secondary-light font-semibold h-12 rounded-lg text-sm"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
                     <>
-                      <Loader2 className="w-5 h-5 animate-spin" />
+                      <Loader2 className="w-4 h-4 animate-spin" />
                       Sending...
                     </>
                   ) : (
                     <>
-                      <Send className="w-5 h-5" />
-                      Submit Inquiry
+                      Send Inquiry
+                      <ArrowRight size={16} />
                     </>
                   )}
                 </Button>
               </form>
             </motion.div>
 
-            {/* Contact Info */}
+            {/* Sidebar */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="space-y-8"
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="lg:col-span-1 space-y-0"
             >
-              {/* Email */}
-              <div className="bg-muted/50 rounded-xl p-6 border border-border">
-                <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-4">
-                  <Mail className="w-6 h-6 text-secondary" />
-                </div>
-                <h3 className="text-lg font-semibold text-card-foreground mb-2">Email</h3>
-                <a
-                  href="mailto:hello@wobrexx.com"
-                  className="text-secondary hover:underline font-medium"
-                >
-                  hello@wobrexx.com
-                </a>
-                <p className="text-sm text-muted-foreground mt-2">
-                  We respond within 24 hours
+              {/* Info panel */}
+              <div className="bg-primary rounded-2xl p-7 mb-6">
+                <p className="text-[11px] font-semibold text-secondary/80 tracking-[0.18em] uppercase mb-7">
+                  Contact Details
                 </p>
+                <div className="space-y-0">
+                  <a
+                    href="mailto:hello@wobrexx.com"
+                    className="flex items-start gap-4 py-5 border-b border-white/[0.07] group"
+                  >
+                    <Mail className="w-4 h-4 text-secondary mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-white/40 text-[11px] uppercase tracking-wider mb-1">
+                        Email
+                      </p>
+                      <p className="text-white/80 text-sm group-hover:text-white transition-colors">
+                        hello@wobrexx.com
+                      </p>
+                    </div>
+                  </a>
+                  <div className="flex items-start gap-4 py-5 border-b border-white/[0.07]">
+                    <Calendar className="w-4 h-4 text-secondary mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-white/40 text-[11px] uppercase tracking-wider mb-1">
+                        Book a Call
+                      </p>
+                      <p className="text-white/80 text-sm">
+                        30-minute strategy session
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4 pt-5">
+                    <MapPin className="w-4 h-4 text-secondary mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-white/40 text-[11px] uppercase tracking-wider mb-1">
+                        Location
+                      </p>
+                      <p className="text-white/80 text-sm">
+                        Remote-First · Sri Lanka
+                        <br />
+                        <span className="text-white/40">Serving global clients</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              {/* Book a Call */}
-              <div className="bg-muted/50 rounded-xl p-6 border border-border">
-                <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-4">
-                  <Calendar className="w-6 h-6 text-secondary" />
-                </div>
-                <h3 className="text-lg font-semibold text-card-foreground mb-2">Book a Call</h3>
-                <Button variant="outline" size="sm" className="w-full">
-                  Schedule Free Consultation
-                </Button>
-                <p className="text-sm text-muted-foreground mt-2">
-                  30-minute strategy session
-                </p>
-              </div>
-
-              {/* Location */}
-              <div className="bg-muted/50 rounded-xl p-6 border border-border">
-                <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-4">
-                  <MapPin className="w-6 h-6 text-secondary" />
-                </div>
-                <h3 className="text-lg font-semibold text-card-foreground mb-2">Location</h3>
-                <p className="text-muted-foreground">
-                  Remote-First Company<br />
-                  Based in Sri Lanka
-                </p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  Serving Global Clients
-                </p>
+              {/* Trust signals */}
+              <div className="space-y-0 border border-border rounded-2xl overflow-hidden">
+                {trustPoints.map((point, i) => (
+                  <div
+                    key={point}
+                    className={`flex items-start gap-3 px-5 py-4 ${
+                      i < trustPoints.length - 1 ? "border-b border-border" : ""
+                    }`}
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0 mt-2" />
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {point}
+                    </p>
+                  </div>
+                ))}
               </div>
             </motion.div>
           </div>

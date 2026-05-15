@@ -14,57 +14,61 @@ const footerLinks = {
     { label: "Cookie Policy", href: "/cookies" },
   ],
   services: [
-    { label: "Process Automation", href: "/services#process" },
-    { label: "System Integration", href: "/services#integration" },
-    { label: "AI Analytics", href: "/services#ai" },
+    { label: "Process Automation", href: "/services#process-automation" },
+    { label: "Custom SaaS", href: "/services#custom-saas" },
+    { label: "Web Development", href: "/services#websites" },
+    { label: "Software Maintenance", href: "/services#software-maintenance" },
   ],
 };
 
 export const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+    <footer className="bg-primary border-t border-white/[0.05]">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Main grid */}
+        <div className="py-14 md:py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-14">
           {/* Brand */}
-          <div className="lg:col-span-1">
-            <Link to="/" className="inline-block mb-4">
-              <img src="/logo.png" alt="Wobrexx Logo" className="h-12 w-auto" />
+          <div className="lg:col-span-2">
+            <Link to="/" className="inline-block mb-5">
+              <img src="/logo.png" alt="Wobrexx" className="h-10 w-auto" />
             </Link>
-            <p className="text-primary-foreground/70 text-sm mb-6">
-              Bringing enterprise-grade automation to European SMEs.
-              Transform your business with intelligent process automation.
+            <p className="text-white/35 text-sm leading-relaxed mb-6 max-w-xs">
+              Design, build, and automate the systems that grow your business —
+              faster, leaner, and built to scale.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex gap-3">
               <a
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary-foreground/60 hover:text-secondary transition-colors"
+                className="w-8 h-8 rounded-lg bg-white/[0.05] flex items-center justify-center text-white/35 hover:text-white hover:bg-white/10 transition-colors"
                 aria-label="LinkedIn"
               >
-                <Linkedin size={20} />
+                <Linkedin size={14} />
               </a>
               <a
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary-foreground/60 hover:text-secondary transition-colors"
+                className="w-8 h-8 rounded-lg bg-white/[0.05] flex items-center justify-center text-white/35 hover:text-white hover:bg-white/10 transition-colors"
                 aria-label="Twitter"
               >
-                <Twitter size={20} />
+                <Twitter size={14} />
               </a>
             </div>
           </div>
 
-          {/* Company Links */}
+          {/* Company */}
           <div>
-            <h3 className="font-semibold mb-4">Company</h3>
-            <ul className="space-y-3">
+            <h3 className="text-white/50 text-[10px] font-semibold tracking-[0.14em] uppercase mb-5">
+              Company
+            </h3>
+            <ul className="space-y-3.5">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="text-sm text-primary-foreground/70 hover:text-secondary transition-colors"
+                    className="text-sm text-white/35 hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -73,15 +77,17 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Services Links */}
+          {/* Services */}
           <div>
-            <h3 className="font-semibold mb-4">Services</h3>
-            <ul className="space-y-3">
+            <h3 className="text-white/50 text-[10px] font-semibold tracking-[0.14em] uppercase mb-5">
+              Services
+            </h3>
+            <ul className="space-y-3.5">
               {footerLinks.services.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="text-sm text-primary-foreground/70 hover:text-secondary transition-colors"
+                    className="text-sm text-white/35 hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -90,23 +96,26 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact */}
           <div>
-            <h3 className="font-semibold mb-4">Contact</h3>
-            <ul className="space-y-3">
-              <li className="flex items-start space-x-3">
-                <Mail size={16} className="text-secondary mt-1 flex-shrink-0" />
+            <h3 className="text-white/50 text-[10px] font-semibold tracking-[0.14em] uppercase mb-5">
+              Contact
+            </h3>
+            <ul className="space-y-4">
+              <li>
                 <a
                   href="mailto:hello@wobrexx.com"
-                  className="text-sm text-primary-foreground/70 hover:text-secondary transition-colors"
+                  className="flex items-center gap-3 text-sm text-white/35 hover:text-white transition-colors"
                 >
+                  <Mail size={13} className="flex-shrink-0" />
                   hello@wobrexx.com
                 </a>
               </li>
-              <li className="flex items-start space-x-3">
-                <MapPin size={16} className="text-secondary mt-1 flex-shrink-0" />
-                <span className="text-sm text-primary-foreground/70">
-                  Remote-First Company<br />
+              <li className="flex items-start gap-3 text-sm text-white/35">
+                <MapPin size={13} className="flex-shrink-0 mt-0.5" />
+                <span>
+                  Remote-First Company
+                  <br />
                   Serving Businesses Globally
                 </span>
               </li>
@@ -114,23 +123,21 @@ export const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-primary-light/20">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-sm text-primary-foreground/60">
-              © {new Date().getFullYear()} Wobrexx. All rights reserved.
-            </p>
-            <div className="flex space-x-6">
-              {footerLinks.legal.map((link) => (
-                <Link
-                  key={link.label}
-                  to={link.href}
-                  className="text-sm text-primary-foreground/60 hover:text-secondary transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
+        {/* Bottom bar */}
+        <div className="border-t border-white/[0.05] py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-xs text-white/20">
+            © {new Date().getFullYear()} Wobrexx. All rights reserved.
+          </p>
+          <div className="flex gap-6">
+            {footerLinks.legal.map((link) => (
+              <Link
+                key={link.label}
+                to={link.href}
+                className="text-xs text-white/20 hover:text-white/50 transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

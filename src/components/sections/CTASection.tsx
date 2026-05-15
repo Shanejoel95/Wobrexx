@@ -1,80 +1,96 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Download, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+const noiseSvg = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`;
 
 export const CTASection = () => {
   return (
-    <section className="py-16 md:py-24 relative overflow-hidden">
-      {/* Gradient Background */}
+    <section
+      className="py-20 md:py-28 relative overflow-hidden"
+      style={{
+        background: `
+          radial-gradient(ellipse at 0% 100%, hsl(28 100% 50% / 0.1) 0%, transparent 55%),
+          radial-gradient(ellipse at 100% 0%, hsl(213 80% 30% / 0.4) 0%, transparent 55%),
+          hsl(213 100% 10%)
+        `,
+      }}
+    >
+      {/* Grain */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 pointer-events-none z-0"
         style={{
-          background: "linear-gradient(90deg, hsl(210, 84%, 10%) 0%, hsl(197, 100%, 45%) 50%, hsl(210, 84%, 10%) 100%)",
+          backgroundImage: noiseSvg,
+          opacity: 0.04,
+          mixBlendMode: "overlay",
         }}
       />
 
-      {/* Animated Particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-64 h-64 rounded-full bg-secondary/10"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.5, 0.3],
-            }}
-            transition={{
-              duration: 4 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-      </div>
+      {/* Dot grid */}
+      <div className="absolute inset-0 line-grid opacity-20 pointer-events-none z-0" />
+
+      {/* Large background text watermark */}
+      <span
+        className="absolute right-[-2%] bottom-[-15%] font-display font-black text-white leading-none select-none pointer-events-none z-0"
+        style={{ fontSize: "clamp(10rem, 30vw, 28rem)", opacity: 0.018 }}
+        aria-hidden="true"
+      >
+        GO
+      </span>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">
-            Ready to Transform Your Business?
+          <span className="text-[11px] font-semibold text-secondary tracking-[0.18em] uppercase block mb-8">
+            Get Started
+          </span>
+
+          {/* Headline with inline orange highlight */}
+          <h2
+            className="font-display font-bold text-white leading-[1.15] tracking-tight mb-8"
+            style={{ fontSize: "clamp(2.4rem, 7vw, 6rem)" }}
+          >
+            Ready to{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10 text-primary px-1 py-1 bg-secondary rounded-md leading-none">
+                transform
+              </span>
+            </span>
+            <br />
+            your business?
           </h2>
-          <p className="text-lg md:text-xl text-primary-foreground/90 max-w-2xl mx-auto mb-10">
-            Join forward-thinking European SMEs who are automating their way to success.
-            Book your free consultation today.
+
+          <p className="text-white/45 text-base md:text-lg max-w-md mb-10 leading-relaxed">
+            Book a free 30-minute consultation. We'll map out exactly what can
+            be automated — and what it's worth to you.
           </p>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Button variant="white" size="xl" asChild>
+          <div className="flex flex-col sm:flex-row items-start gap-4 mb-16">
+            <Button
+              className="bg-secondary text-secondary-foreground hover:bg-secondary-light font-semibold px-7 h-12 rounded-xl text-sm shadow-lg shadow-secondary/20"
+              asChild
+            >
               <Link to="/contact" className="flex items-center gap-2">
                 Book Free Strategy Session
-                <ArrowRight size={20} />
+                <ArrowRight size={16} />
               </Link>
-            </Button>
-            <Button variant="white-outline" size="xl" className="group">
-              <Download size={20} className="group-hover:scale-110 transition-transform" />
-              Download Automation Guide
             </Button>
           </div>
 
-          {/* Trust Items */}
-          <div className="flex flex-wrap gap-6 justify-center text-primary-foreground/80">
-            {["No obligations", "30-minute call", "Custom automation roadmap"].map((item) => (
-              <div key={item} className="flex items-center gap-2">
-                <Check size={18} className="text-secondary" />
-                <span className="text-sm">{item}</span>
-              </div>
-            ))}
+          <div className="border-t border-white/[0.07] pt-10 flex flex-wrap gap-8">
+            {["No obligations", "30-minute call", "Custom automation roadmap"].map(
+              (item) => (
+                <div key={item} className="flex items-center gap-2.5">
+                  <div className="w-1.5 h-1.5 rounded-full bg-secondary" />
+                  <span className="text-white/30 text-sm">{item}</span>
+                </div>
+              )
+            )}
           </div>
         </motion.div>
       </div>

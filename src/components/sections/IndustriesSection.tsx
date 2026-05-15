@@ -36,43 +36,41 @@ const industries = [
 
 export const IndustriesSection = () => {
   return (
-    <section className="py-16 md:py-24 bg-muted/50">
+    <section className="py-20 md:py-28 bg-muted/40">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          transition={{ duration: 0.5 }}
+          className="mb-10 md:mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/30 text-secondary mb-4">
-            <span className="text-sm font-medium">Industries We Serve</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Automation Solutions for Every Sector
+          <span className="text-[11px] font-semibold text-secondary tracking-[0.18em] uppercase block mb-4">
+            Industries
+          </span>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+            Automation for every sector
           </h2>
         </motion.div>
 
-        {/* Industries Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Mosaic grid — gap acts as border via bg-border on parent */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden border border-border">
           {industries.map((industry, index) => (
             <motion.div
               key={industry.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -4 }}
-              className="bg-card rounded-xl p-6 border border-border hover:border-secondary/30 hover:shadow-lg transition-all duration-300 flex items-start gap-4"
+              transition={{ duration: 0.4, delay: index * 0.06 }}
+              className="bg-white hover:bg-muted/30 transition-colors p-7 group"
             >
-              <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center flex-shrink-0">
-                <industry.icon className="w-6 h-6 text-secondary" />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-card-foreground mb-1">{industry.title}</h3>
-                <p className="text-muted-foreground text-sm">{industry.description}</p>
-              </div>
+              <industry.icon className="w-6 h-6 text-secondary mb-5 transition-transform group-hover:scale-110" />
+              <h3 className="font-display text-base font-bold text-foreground mb-2">
+                {industry.title}
+              </h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {industry.description}
+              </p>
             </motion.div>
           ))}
         </div>

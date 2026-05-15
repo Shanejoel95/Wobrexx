@@ -5,23 +5,16 @@ import { Button } from "@/components/ui/button";
 import {
   Workflow,
   LayoutDashboard,
-  Code,
   Globe,
-  Rocket,
-  Check,
+  Wrench,
   ArrowRight,
-  FileText,
-  Mail,
-  Clock,
-  Users,
-  Link as LinkIcon,
-  BarChart3,
 } from "lucide-react";
 import { CTASection } from "@/components/sections/CTASection";
 
 const services = [
   {
     id: "process-automation",
+    number: "01",
     icon: Workflow,
     title: "Process Automation",
     description:
@@ -35,10 +28,10 @@ const services = [
       "HR, finance, and operations workflows streamlined",
     ],
     technologies: ["Zapier", "Make", "n8n", "Power Automate"],
-    color: "secondary",
   },
   {
     id: "custom-saas",
+    number: "02",
     icon: LayoutDashboard,
     title: "Custom SaaS Platforms",
     description:
@@ -52,10 +45,10 @@ const services = [
       "Scalable architecture ready for future features",
     ],
     technologies: ["React", "Node.js", "PostgreSQL", "AWS / Azure"],
-    color: "secondary",
   },
   {
     id: "websites",
+    number: "03",
     icon: Globe,
     title: "Websites & Web Experiences",
     description:
@@ -69,96 +62,120 @@ const services = [
       "Content workflows connected to your internal tools",
     ],
     technologies: ["Next.js", "Vite / React", "Headless CMS", "Analytics stack"],
-    color: "secondary",
   },
   {
-    id: "product-development",
-    icon: Rocket,
-    title: "Product Development",
+    id: "software-maintenance",
+    number: "04",
+    icon: Wrench,
+    title: "Software Maintenance",
     description:
-      "From first idea to shipped product, we help you define, design, and deliver digital products that scale.",
+      "Keep your systems performant, secure, and evolving. We handle ongoing updates, monitoring, and iteration so your technology never falls behind.",
     benefits: [
-      "Product discovery and requirements definition",
-      "UX/UI design aligned with your brand and users",
-      "MVP builds to validate quickly with real customers",
-      "Roadmapping and iteration based on usage data",
-      "Integration and automation strategy baked in",
-      "Handover and training for your internal teams",
+      "Proactive monitoring and incident response",
+      "Security patches and dependency updates",
+      "Performance optimisation and code health reviews",
+      "Feature iteration based on real usage data",
+      "Bug fixes with full root-cause analysis",
+      "Documentation and knowledge transfer for your team",
     ],
-    technologies: ["Product strategy", "UX/UI design", "Agile delivery", "API‑first systems"],
-    color: "secondary",
+    technologies: ["CI/CD pipelines", "Monitoring & alerting", "Version control", "Automated testing"],
   },
 ];
 
 const ServicesPage = () => {
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="py-16 md:py-24 gradient-navy">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Page Header */}
+      <section className="bg-primary pt-32 pb-20 md:pt-40 md:pb-24 relative overflow-hidden">
+        <div className="absolute inset-0 line-grid opacity-25 pointer-events-none z-0" />
+        <div
+          className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none z-0"
+          style={{
+            background:
+              "radial-gradient(circle, hsl(28 100% 50% / 0.08) 0%, transparent 65%)",
+          }}
+        />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
-              Services to Design, Build & Automate Your Systems
+            <span className="text-[11px] font-semibold text-secondary tracking-[0.18em] uppercase block mb-5">
+              What We Offer
+            </span>
+            <h1
+              className="font-display font-bold text-white leading-[0.93] tracking-tight mb-6 max-w-2xl"
+              style={{ fontSize: "clamp(2.8rem, 7vw, 6rem)" }}
+            >
+              Design, Build<br />&amp; Automate.
             </h1>
-            <p className="text-lg md:text-xl text-primary-foreground/80">
-              Wobrexx partners with solo founders, agencies, SMBs, and mid‑market teams
-              to create the websites, products, and automations that keep operations moving fast.
+            <p className="text-white/45 text-base md:text-lg max-w-lg leading-relaxed">
+              Wobrexx partners with founders, agencies, and scaling teams
+              worldwide to design, build, and maintain the systems that keep
+              operations moving fast.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Services Detail Sections */}
+      {/* Service navigation strip */}
+      <div className="bg-white border-b border-border sticky top-[60px] z-40">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex gap-0 overflow-x-auto scrollbar-none">
+            {services.map((s) => (
+              <a
+                key={s.id}
+                href={`#${s.id}`}
+                className="flex-shrink-0 py-4 px-5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/30 transition-colors border-b-2 border-transparent hover:border-secondary whitespace-nowrap"
+              >
+                {s.title}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Service Sections */}
       {services.map((service, index) => (
         <section
           key={service.id}
           id={service.id}
-          className={`py-16 md:py-24 ${index % 2 === 0 ? "bg-card" : "bg-muted/50"}`}
+          className={`py-20 md:py-28 ${index % 2 === 0 ? "bg-white" : "bg-muted/40"}`}
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
               {/* Content */}
               <motion.div
-                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
                 className={index % 2 !== 0 ? "lg:order-2" : ""}
               >
-                <div className="w-16 h-16 rounded-xl bg-secondary/10 flex items-center justify-center mb-6">
-                  <service.icon className="w-8 h-8 text-secondary" />
+                <div className="flex items-center gap-4 mb-7">
+                  <span className="text-xs font-mono text-muted-foreground/50">
+                    {service.number}
+                  </span>
+                  <service.icon className="w-6 h-6 text-secondary" />
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-card-foreground mb-4">
+
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight">
                   {service.title}
                 </h2>
-                <p className="text-lg text-muted-foreground mb-8">
+                <p className="text-muted-foreground leading-relaxed mb-10 max-w-md">
                   {service.description}
                 </p>
 
-                <div className="mb-8">
-                  <h3 className="text-lg font-semibold text-card-foreground mb-4">What's Included:</h3>
-                  <ul className="grid sm:grid-cols-2 gap-3">
-                    {service.benefits.map((benefit) => (
-                      <li key={benefit} className="flex items-start gap-2">
-                        <Check className="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mb-8">
-                  <h3 className="text-sm font-medium text-muted-foreground mb-3">Technologies we use:</h3>
+                <div className="mb-10">
+                  <p className="text-[11px] font-semibold text-muted-foreground/60 tracking-[0.14em] uppercase mb-5">
+                    Technologies
+                  </p>
                   <div className="flex flex-wrap gap-2">
                     {service.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm"
+                        className="text-xs font-medium text-secondary bg-secondary/8 border border-secondary/15 px-3 py-1.5 rounded-lg"
                       >
                         {tech}
                       </span>
@@ -166,45 +183,48 @@ const ServicesPage = () => {
                   </div>
                 </div>
 
-                <Button variant="secondary" size="lg" asChild>
+                <Button
+                  className="bg-secondary text-secondary-foreground hover:bg-secondary-light font-semibold px-6 h-11 rounded-lg text-sm"
+                  asChild
+                >
                   <Link to="/contact" className="flex items-center gap-2">
                     Get Started
-                    <ArrowRight size={18} />
+                    <ArrowRight size={16} />
                   </Link>
                 </Button>
               </motion.div>
 
-              {/* Visual */}
+              {/* Benefits panel */}
               <motion.div
-                initial={{ opacity: 0, x: index % 2 === 0 ? 30 : -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.6, delay: 0.15 }}
                 className={index % 2 !== 0 ? "lg:order-1" : ""}
               >
-                <div className="bg-gradient-to-br from-primary/5 to-secondary/10 rounded-2xl p-8 border border-border">
-                  <div className="grid grid-cols-2 gap-4">
-                    {[
-                      { icon: FileText, label: "Documents" },
-                      { icon: Mail, label: "Emails" },
-                      { icon: Clock, label: "Scheduling" },
-                      { icon: Users, label: "Teams" },
-                      { icon: LinkIcon, label: "Integrations" },
-                      { icon: BarChart3, label: "Analytics" },
-                    ].map((item, i) => (
-                      <motion.div
-                        key={item.label}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.1 }}
-                        className="bg-card rounded-xl p-4 text-center border border-border hover:border-secondary/30 transition-colors"
+                <div className="bg-primary rounded-2xl p-8 md:p-10">
+                  <p className="text-[11px] font-semibold text-secondary/80 tracking-[0.18em] uppercase mb-7">
+                    What's Included
+                  </p>
+                  <ul className="space-y-0">
+                    {service.benefits.map((benefit, i) => (
+                      <li
+                        key={benefit}
+                        className={`flex items-start gap-5 py-4 ${
+                          i < service.benefits.length - 1
+                            ? "border-b border-white/[0.07]"
+                            : ""
+                        }`}
                       >
-                        <item.icon className="w-6 h-6 text-secondary mx-auto mb-2" />
-                        <span className="text-xs text-muted-foreground">{item.label}</span>
-                      </motion.div>
+                        <span className="text-[11px] font-mono text-white/20 flex-shrink-0 mt-0.5 w-5">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="text-white/65 text-sm leading-relaxed">
+                          {benefit}
+                        </span>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
               </motion.div>
             </div>

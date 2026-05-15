@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FileText, Users, Clock, Zap, UserCheck, RefreshCw, ArrowDown } from "lucide-react";
+import { FileText, Users, Clock, Zap, UserCheck, RefreshCw } from "lucide-react";
 
 const problems = [
   {
@@ -23,12 +23,12 @@ const solutions = [
   {
     icon: Zap,
     title: "Invoice Processing",
-    benefit: "Save 15 hours/week",
+    benefit: "Save 15 hrs/week",
   },
   {
     icon: UserCheck,
     title: "Customer Onboarding",
-    benefit: "2x faster completion",
+    benefit: "2× faster completion",
   },
   {
     icon: RefreshCw,
@@ -39,84 +39,100 @@ const solutions = [
 
 export const ProblemSection = () => {
   return (
-    <section className="py-16 md:py-24 bg-card">
+    <section className="py-20 md:py-28 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-card-foreground mb-4">
-            Still Losing Time on Manual Tasks?
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            European SMEs waste thousands of hours annually on repetitive tasks that should be automated.
-          </p>
-        </motion.div>
-
-        {/* Problem Cards */}
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-12">
-          {problems.map((problem, index) => (
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          {/* Left: Problems */}
+          <div>
             <motion.div
-              key={problem.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-muted/50 rounded-xl p-6 border border-border hover:border-secondary/30 transition-all duration-300 group"
+              transition={{ duration: 0.5 }}
             >
-              <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-4 group-hover:bg-secondary/20 transition-colors">
-                <problem.icon className="w-6 h-6 text-secondary" />
-              </div>
-              <h3 className="text-lg font-semibold text-card-foreground mb-2">{problem.title}</h3>
-              <p className="text-muted-foreground text-sm">{problem.description}</p>
+              <span className="text-[11px] font-semibold text-secondary tracking-[0.18em] uppercase block mb-5">
+                The Problem
+              </span>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground leading-tight mb-12 md:mb-16">
+                Still losing time<br />on manual work?
+              </h2>
             </motion.div>
-          ))}
-        </div>
 
-        {/* Arrow Animation */}
-        <motion.div
-          className="flex justify-center my-8"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-        >
-          <ArrowDown className="w-12 h-12 text-secondary" />
-        </motion.div>
-
-        {/* Solution Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="gradient-navy rounded-2xl p-8 md:p-12"
-        >
-          <h3 className="text-2xl md:text-3xl font-bold text-center text-primary-foreground mb-8">
-            Wobrexx Automates It All
-          </h3>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {solutions.map((solution, index) => (
-              <motion.div
-                key={solution.title}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                className="text-center p-6 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 hover:bg-primary-foreground/10 transition-all duration-300"
-              >
-                <div className="w-14 h-14 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
-                  <solution.icon className="w-7 h-7 text-secondary" />
-                </div>
-                <h4 className="text-lg font-semibold text-primary-foreground mb-2">{solution.title}</h4>
-                <p className="text-secondary font-medium">{solution.benefit}</p>
-              </motion.div>
-            ))}
+            <div className="space-y-10">
+              {problems.map((problem, index) => (
+                <motion.div
+                  key={problem.title}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="flex items-start gap-6"
+                >
+                  <span className="text-5xl md:text-6xl font-black font-display text-foreground/[0.06] leading-none select-none flex-shrink-0 w-16 text-right">
+                    0{index + 1}
+                  </span>
+                  <div className="pt-1.5">
+                    <h3 className="text-base font-semibold text-foreground mb-2">
+                      {problem.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {problem.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </motion.div>
+
+          {/* Right: Solution dark panel */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="bg-primary rounded-2xl p-8 md:p-10 lg:sticky lg:top-28"
+          >
+            <span className="text-[11px] font-semibold text-secondary/80 tracking-[0.18em] uppercase block mb-4">
+              The Solution
+            </span>
+            <h3 className="font-display text-xl md:text-2xl font-bold text-white mb-8 leading-snug">
+              Wobrexx handles<br />all of it — automatically.
+            </h3>
+
+            <div className="space-y-0">
+              {solutions.map((solution, i) => (
+                <div
+                  key={solution.title}
+                  className={`flex items-center justify-between py-5 ${
+                    i < solutions.length - 1
+                      ? "border-b border-white/[0.07]"
+                      : ""
+                  }`}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-9 h-9 rounded-lg bg-secondary/15 flex items-center justify-center flex-shrink-0">
+                      <solution.icon className="w-4 h-4 text-secondary" />
+                    </div>
+                    <span className="text-white/75 text-sm font-medium">
+                      {solution.title}
+                    </span>
+                  </div>
+                  <span className="text-secondary text-sm font-bold">
+                    {solution.benefit}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 pt-8 border-t border-white/[0.07]">
+              <p className="text-white/35 text-xs leading-relaxed">
+                Growing businesses waste thousands of hours annually on
+                repetitive tasks. Wobrexx eliminates that overhead — without
+                the enterprise price tag or complexity.
+              </p>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
