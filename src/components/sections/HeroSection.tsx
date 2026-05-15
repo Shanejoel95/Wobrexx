@@ -56,22 +56,6 @@ export const HeroSection = () => {
       </span>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-28 md:pt-36 pb-16">
-        {/* Live indicator */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex items-center gap-3 mb-12 md:mb-16"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary" />
-          </span>
-          <span className="text-secondary/75 text-xs font-medium tracking-[0.18em] uppercase">
-            Now Launching — Early Bird Discount Available
-          </span>
-        </motion.div>
-
         {/* Manifesto headline */}
         <div className="mb-12 md:mb-16">
           {headlineLines.map((line, i) => (
