@@ -1,5 +1,11 @@
-import { motion, useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValueEvent,
+  type MotionValue,
+} from "framer-motion";
+import { useRef, useState } from "react";
 
 const stats = [
   { number: 40, suffix: "%", label: "Average cost reduction" },
@@ -8,35 +14,24 @@ const stats = [
   { number: 98, suffix: "%", label: "Client satisfaction" },
 ];
 
-const CountUp = ({ target, suffix }: { target: number; suffix: string }) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true });
-
-  useEffect(() => {
-    if (isInView) {
-      const duration = 2000;
-      const steps = 60;
-      const increment = target / steps;
-      let current = 0;
-
-      const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-          setCount(target);
-          clearInterval(timer);
-        } else {
-          setCount(Math.floor(current));
-        }
-      }, duration / steps);
-
-      return () => clearInterval(timer);
-    }
-  }, [isInView, target]);
+// Count scrubbed to scroll position — the numbers fill as the section rises
+// into view (and rewind on scroll-up), driven by a shared scroll progress.
+const ScrubCount = ({
+  target,
+  suffix,
+  progress,
+}: {
+  target: number;
+  suffix: string;
+  progress: MotionValue<number>;
+}) => {
+  const value = useTransform(progress, [0, 1], [0, target], { clamp: true });
+  const [display, setDisplay] = useState(0);
+  useMotionValueEvent(value, "change", (v) => setDisplay(Math.round(v)));
 
   return (
-    <span ref={ref}>
-      {count}
+    <span>
+      {display}
       {suffix}
     </span>
   );
@@ -44,18 +39,20 @@ const CountUp = ({ target, suffix }: { target: number; suffix: string }) => {
 
 const borderClass = (index: number) => {
   const classes: string[] = [];
-  // Mobile (2-col): right border for left column
   if (index % 2 === 0) classes.push("border-r border-border");
-  // Mobile: top border for second row
   if (index >= 2) classes.push("border-t border-border");
-  // Desktop (4-col): add right border for index 1 (not in left column on mobile)
   if (index === 1) classes.push("md:border-r md:border-border");
-  // Desktop: remove top border added for mobile second row
   if (index >= 2) classes.push("md:border-t-0");
   return classes.join(" ");
 };
 
 export const StatsSection = () => {
+  const gridRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: gridRef,
+    offset: ["start 0.9", "start 0.4"],
+  });
+
   return (
     <section className="py-20 md:py-28 bg-white border-y border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,7 +71,10 @@ export const StatsSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 border border-border rounded-2xl overflow-hidden">
+        <div
+          ref={gridRef}
+          className="grid grid-cols-2 md:grid-cols-4 border border-border rounded-2xl overflow-hidden"
+        >
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -85,7 +85,11 @@ export const StatsSection = () => {
               className={`p-8 md:p-10 lg:p-12 ${borderClass(index)}`}
             >
               <p className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-secondary mb-3">
-                <CountUp target={stat.number} suffix={stat.suffix} />
+                <ScrubCount
+                  target={stat.number}
+                  suffix={stat.suffix}
+                  progress={scrollYProgress}
+                />
               </p>
               <p className="text-sm text-muted-foreground">{stat.label}</p>
             </motion.div>

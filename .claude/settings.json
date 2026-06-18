@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(echo \"===SKILL REFERENCES===\" && ls -la /Users/joelshane/.claude/skills/3d-site-planner/references/ 2>/dev/null && echo \"\" && echo \"===OUTPUTS DIR===\" && ls -la /mnt/user-data/outputs/ 2>/dev/null || echo \"no /mnt outputs\")",
+      "Read(//mnt/user-data/**)",
+      "Bash(echo \"===TSC DONE \\(exit $?\\)===\")",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"home %{http_code}\\\\n\" http://localhost:8080/)",
+      "Bash(curl -s -o /dev/null -w \"lattice-chunk %{http_code}\\\\n\" http://localhost:8080/src/components/three/HeroLattice.tsx)",
+      "Bash(echo \"===tsc exit $?===\")",
+      "Bash(node -e \"console.log\\('lenis', require\\('./node_modules/lenis/package.json'\\).version\\)\")"
+    ]
+  }
+}

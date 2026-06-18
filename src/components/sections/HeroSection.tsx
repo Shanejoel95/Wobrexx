@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LatticeBackground } from "@/components/three/LatticeBackground";
 
 const stats = [
   { value: "40%", label: "Avg. cost reduction" },
@@ -30,8 +31,11 @@ export const HeroSection = () => {
         `,
       }}
     >
-      {/* Dot grid */}
-      <div className="absolute inset-0 line-grid z-0 pointer-events-none" />
+      {/* Static line grid — also the no-WebGL / reduced-motion fallback */}
+      <div className="absolute inset-0 line-grid z-0 pointer-events-none opacity-60" />
+
+      {/* Live "Systems Lattice" WebGL layer (decorative, lazy, guarded) */}
+      <LatticeBackground />
 
       {/* Grain texture */}
       <div

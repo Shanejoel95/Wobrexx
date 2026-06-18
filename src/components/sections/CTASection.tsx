@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LatticeBackground } from "@/components/three/LatticeBackground";
 
 const noiseSvg = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`;
 
@@ -29,6 +30,23 @@ export const CTASection = () => {
 
       {/* Dot grid */}
       <div className="absolute inset-0 line-grid opacity-20 pointer-events-none z-0" />
+
+      {/* Live "Systems Lattice" WebGL layer — subtler than the hero */}
+      <LatticeBackground
+        config={{
+          count: 130,
+          mobileCount: 80,
+          maxLines: 420,
+          cursorRadius: 3.8,
+          cursorRepel: 1.1,
+          lineOpacity: 0.12,
+          pulseAmount: 0.4,
+          idleSpin: 0.03,
+          parallaxRot: 0.35,
+          parallaxPos: 0.8,
+          bloomIntensity: 0.6,
+        }}
+      />
 
       {/* Large background text watermark */}
       <span

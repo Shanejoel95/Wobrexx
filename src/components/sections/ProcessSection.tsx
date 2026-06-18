@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { Phone, FileText, Settings, Rocket } from "lucide-react";
 
 const noiseSvg = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`;
@@ -39,6 +40,13 @@ const steps = [
 ];
 
 export const ProcessSection = () => {
+  const stepsRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: stepsRef,
+    offset: ["start 0.8", "center 0.55"],
+  });
+  const lineScaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
   return (
     <section
       className="py-20 md:py-28 overflow-hidden relative"
@@ -76,9 +84,13 @@ export const ProcessSection = () => {
         </motion.div>
 
         {/* Steps grid */}
-        <div className="grid md:grid-cols-4 gap-8 md:gap-6 relative">
-          {/* Horizontal connector line */}
+        <div ref={stepsRef} className="grid md:grid-cols-4 gap-8 md:gap-6 relative">
+          {/* Horizontal connector line — track + scroll-drawn orange fill */}
           <div className="hidden md:block absolute top-[26px] left-[calc(12.5%+4px)] right-[calc(12.5%+4px)] h-px bg-white/[0.07] z-0" />
+          <motion.div
+            className="hidden md:block absolute top-[26px] left-[calc(12.5%+4px)] right-[calc(12.5%+4px)] h-px bg-secondary/60 z-0 origin-left"
+            style={{ scaleX: lineScaleX }}
+          />
 
           {steps.map((step, index) => (
             <motion.div
